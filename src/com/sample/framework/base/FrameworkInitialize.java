@@ -5,31 +5,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class FrameworkInitialize extends Base{
+public class FrameworkInitialize extends Base {
 
     WebDriver driver = null;
-    public void initializeBrowser(BrowserType browserType){
-        switch(browserType){
-            case Chrome:
-            {
+
+    public void initializeBrowser(BrowserType browserType) {
+        switch (browserType) {
+            case Chrome: {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
                 break;
             }
-            case Firefox:
-            {
+            case Firefox: {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
                 break;
             }
-            case IE:
-            {
+            case IE: {
                 break;
             }
-            case Safari:
-            {
+            case Safari: {
 
             }
         }
