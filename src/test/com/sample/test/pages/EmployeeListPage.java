@@ -10,9 +10,6 @@ public class EmployeeListPage extends BasePage {
     public EmployeeListPage() {
     }
 
-    @FindBy(how = How.XPATH ,using = "//a[text()='Create New']")
+    @FindBy(how = How.XPATH, using = "//a[text()='Create New']")
     public WebElement btn_createNew;
-
-
-
 }

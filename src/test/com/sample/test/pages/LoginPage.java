@@ -9,16 +9,17 @@ public class LoginPage extends BasePage {
 
     public LoginPage() {
     }
-    @FindBy(how = How.ID ,using = "UserName")
+
+    @FindBy(how = How.ID, using = "UserName")
     public WebElement lbl_userName;
 
-    @FindBy(how = How.ID ,using = "Password")
+    @FindBy(how = How.ID, using = "Password")
     public WebElement lbl_password;
 
-    @FindBy(how = How.XPATH ,using = "//input[@value='Log in']")
+    @FindBy(how = How.XPATH, using = "//input[@value='Log in']")
     public WebElement btn_submit;
 
-    public BasePage login(String username , String password){
+    public BasePage login(String username, String password) {
         lbl_userName.sendKeys(username);
         lbl_password.sendKeys(password);
         btn_submit.click();

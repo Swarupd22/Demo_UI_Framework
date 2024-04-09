@@ -10,20 +10,18 @@ public class HomePage extends BasePage {
     public HomePage() {
     }
 
-    @FindBy(how = How.XPATH ,using = "//a[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//a[text()='Login']")
     public WebElement btn_login;
 
-    @FindBy(how = How.XPATH ,using = "//a[text()='Employee List']")
+    @FindBy(how = How.XPATH, using = "//a[text()='Employee List']")
     public WebElement btn_employeeList;
 
-    public LoginPage clickLogin(){
+    public LoginPage clickLogin() {
         btn_login.click();
         return getInstance(LoginPage.class);
     }
 
-    public void clickEmployeeList(){
+    public void clickEmployeeList() {
         btn_employeeList.click();
     }
-
-
 }
