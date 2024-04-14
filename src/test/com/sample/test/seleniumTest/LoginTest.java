@@ -4,23 +4,14 @@ import com.sample.framework.base.DriverContext;
 import com.sample.framework.base.FrameworkInitialize;
 import com.sample.framework.config.ConfigReader;
 import com.sample.framework.config.Settings;
-import com.sample.framework.utilities.DatabaseUtil;
-import com.sample.framework.utilities.ExcelUtil;
-import com.sample.framework.utilities.LogUtil;
-import com.sample.framework.utilities.ReportingUtil;
+import com.sample.framework.utilities.*;
 import com.sample.test.pages.HomePage;
 import com.sample.test.pages.LoginPage;
-import jxl.read.biff.BiffException;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.sql.Connection;
+import org.testng.annotations.*;
 
 public class LoginTest extends FrameworkInitialize {
     @BeforeTest
-    public void Initialize() throws BiffException, IOException {
+    public void Initialize() throws Exception {
         ConfigReader.populateSettings();
 //        Connection conn = DatabaseUtil.open(Settings.AUTConnectionString);
 //        DatabaseUtil.executeQuery("SELECT * FROM Employees", conn);
@@ -35,6 +26,11 @@ public class LoginTest extends FrameworkInitialize {
         ExcelUtil util = new ExcelUtil(Settings.ExcelSheetPath);
     }
 
+    @BeforeMethod
+    public void recordingStart() throws Exception {
+        MyScreenRecorderUtil.startRecording("login");
+    }
+
     @Test
     public void login() throws InterruptedException {
         Thread.sleep(3000);
@@ -44,6 +40,10 @@ public class LoginTest extends FrameworkInitialize {
         CurrentPage.As(LoginPage.class).login(ExcelUtil.ReadCell("UserName", 1), ExcelUtil.ReadCell("Password", 1));
     }
 
+    @AfterMethod
+    public void recordingStop() throws Exception {
+        MyScreenRecorderUtil.stopRecording();
+    }
     @AfterTest
     public void tearDown() {
         DriverContext.Driver.close();
